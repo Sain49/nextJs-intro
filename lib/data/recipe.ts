@@ -1,7 +1,10 @@
 import { Recipe, RecipeResponse } from "../interfaces";
 
-export async function fetchAllRecipes() {
-  const response = await fetch("https://dummyjson.com/recipes");
+export async function fetchAllRecipes(tag?: string) {
+  const url = tag
+    ? `https://dummyjson.com/recipes/tag/${tag}`
+    : "https://dummyjson.com/recipes";
+  const response = await fetch(url);
   const { recipes }: RecipeResponse = await response.json();
 
   return recipes;
