@@ -55,7 +55,7 @@ export default async function RecipePage({
             Reviews:
             <ReviewStars rating={recipe.rating} />({recipe.reviewCount})
           </div>
-          <Bagdes className="bg-neutral-300" strings={recipe.tags} />
+          <Bagdes className="bg-neutral-300" tags={recipe.tags} />
           <section>
             <h3 className="font-bold">Ingredients</h3>
             <ul className="list-disc pl-6">
