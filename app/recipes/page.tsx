@@ -1,7 +1,7 @@
 import Card from "@/components/card";
 import MainWrapper from "@/components/main-wrapper";
 import { fetchAllRecipes } from "@/lib/data/recipe";
-import { Recipe, RecipeResponse } from "@/lib/interfaces";
+import { Recipe } from "@/lib/interfaces";
 import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description: "A collection of delicious recipes",
 };
 
-async function RecipeList() {
-  const recipes: Recipe[] = await fetchAllRecipes();
+async function RecipeList({ tag }: { tag?: string }) {
+  const recipes: Recipe[] = await fetchAllRecipes(tag);
   return (
     <ul className="grid gap-4 grid-cols-[repeat(auto-fit,minmax(30ch,1fr))] content-stretch">
       {recipes.map((recipe, i) => (
@@ -48,13 +48,18 @@ async function RecipeList() {
 //   );
 // }
 
-export default async function Recipes() {
-  const recipes: Promise<Recipe[]> = fetchAllRecipes();
+export default async function Recipes({
+  searchParams,
+}: {
+  searchParams: { tag?: string };
+}) {
+  // const recipes: Promise<Recipe[]> = fetchAllRecipes();
+  const { tag } = searchParams;
   return (
-    <MainWrapper title="Recipes">
+    <MainWrapper title={tag ? `${tag} recipes}` : "Recipes"}>
       {/* https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense */}
       <Suspense fallback={<p>Loading recipes...</p>}>
-        <RecipeList />
+        <RecipeList tag={tag} />
       </Suspense>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque dicta
