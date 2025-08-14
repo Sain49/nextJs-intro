@@ -48,6 +48,7 @@ async function RecipeList({ tag }: { tag?: string }) {
 //   );
 // }
 
+// This function is used to generate static paths for dynamic routes
 export default async function Recipes({
   searchParams,
 }: {

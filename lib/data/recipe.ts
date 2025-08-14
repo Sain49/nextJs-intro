@@ -1,5 +1,6 @@
 import { Recipe, RecipeResponse } from "../interfaces";
 
+// This function fetches all recipes, optionally filtered by a tag
 export async function fetchAllRecipes(tag?: string) {
   const url = tag
     ? `https://dummyjson.com/recipes/tag/${tag}`
