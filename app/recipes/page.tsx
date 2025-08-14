@@ -56,7 +56,7 @@ export default async function Recipes({
   // const recipes: Promise<Recipe[]> = fetchAllRecipes();
   const { tag } = searchParams;
   return (
-    <MainWrapper title={tag ? `${tag} recipes}` : "Recipes"}>
+    <MainWrapper title={tag ? `${tag} recipes` : "Recipes"}>
       {/* https://nextjs.org/docs/app/getting-started/fetching-data#with-suspense */}
       <Suspense fallback={<p>Loading recipes...</p>}>
         <RecipeList tag={tag} />
