@@ -11,8 +11,7 @@ export default function Bagdes({
     <ul className="flex gap-1 flex-wrap">
       {tags.map((tag, i) => (
         <li className={`text-sm px-2 py-0.5 ${className}`} key={i}>
-          <Link href={`/recipes?tag=${tag}`}>{tag}</Link> // link to filter
-          recipes by tag
+          <Link href={`/recipes?tag=${tag}`}>{tag}</Link>
         </li>
       ))}
     </ul>
